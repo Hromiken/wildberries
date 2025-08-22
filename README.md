@@ -38,7 +38,7 @@ kafka — брокер Kafka
 
 `docker logs -f app`
 
-📡 API
+4.📡 API
 Создать заказ
 `curl -X POST http://localhost:8080/new_order \
   -H "Content-Type: application/json" \
@@ -47,7 +47,7 @@ kafka — брокер Kafka
 Получить заказ по UUID
 curl -X GET "http://localhost:8080/order/<uuid>"
 
-📂 Структура проекта
+5.📂 Структура проекта
 
 /cmd            — точка входа
 
@@ -68,7 +68,7 @@ curl -X GET "http://localhost:8080/order/<uuid>"
 /web            — статические файлы
 
 
-🛠️ Makefile
+6.🛠️ Makefile
 
 В проекте есть Makefile для удобной работы:
 
