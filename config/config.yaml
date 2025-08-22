@@ -1,0 +1,22 @@
+app:
+  name: 'order-service'
+  version: '1.0.0'
+
+http:
+  port: ${HTTP_PORT}
+
+log:
+  level: 'debug'
+
+postgres:
+  url: ${PG_URL}
+  max_pool_size: 20
+
+kafka:
+  brokers: ["${KAFKA_BROKERS}"]
+  topic: ${KAFKA_TOPIC}
+  group_id: ${KAFKA_GROUP_ID}
+
+cache:
+  size: 10
+  ttl: "30s"

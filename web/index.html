@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Поиск заказа</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        #result { margin-top: 20px; padding: 10px; border: 1px solid #ccc; background: #f9f9f9; }
+        pre { background: #eee; padding: 10px; }
+    </style>
+</head>
+<body>
+<h1>Поиск заказа</h1>
+<input type="text" id="orderId" placeholder="Введите ID заказа">
+<button onclick="fetchOrder()">Найти</button>
+
+<div id="result"></div>
+
+<script>
+    async function fetchOrder() {
+        const orderId = document.getElementById("orderId").value.trim();
+        const resultDiv = document.getElementById("result");
+        resultDiv.innerHTML = "Загрузка...";
+
+        try {
+            const response = await fetch(`http://localhost:8080/order/${orderId}`);
+
+            if (response.status === 404) {
+                resultDiv.innerHTML = "<b>Заказ не найден</b>";
+                return;
+            }
+
+            if (!response.ok) {
+                resultDiv.innerHTML = "Ошибка: " + response.status;
+                return;
+            }
+
+            const data = await response.json();
+            resultDiv.innerHTML = "<h3>Заказ найден:</h3><pre>" + JSON.stringify(data, null, 2) + "</pre>";
+        } catch (err) {
+            resultDiv.innerHTML = "Ошибка подключения: " + err;
+        }
+    }
+</script>
+</body>
+</html>

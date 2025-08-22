@@ -1,0 +1,26 @@
+# VCS
+.git
+.gitignore
+
+# IDE / Editors
+.vscode
+.idea
+*.swp
+*.swo
+
+# Build artifacts
+bin/
+dist/
+*.exe
+*.out
+*.test
+
+# Logs
+logs/
+
+# Secrets
+secrets/
+
+# Misc
+*.md
+*.save
